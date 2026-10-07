@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= task ? 'Edit Task' : 'New Task' %></title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="container">
+        <h2><%= task ? 'Edit Task' : 'New Task' %></h2>
+        <form action="<%= task ? '/task/edit/' + task._id : '/task/new' %>" method="POST">
+            <input type="text" name="title" placeholder="Title" value="<%= task ? task.title : '' %>" required>
+            <textarea name="description" placeholder="Description"><%= task ? task.description : '' %></textarea>
+            <select name="category">
+                <option value="">No Category</option>
+                <% categories.forEach(category => { %>
+                    <option value="<%= category._id %>" <%= task && task.category && task.category.toString() === category._id.toString() ? 'selected' : '' %>><%= category.name %></option>
+                <% }) %>
+            </select>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task List</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    <div class="container">
+        <h2>Tasks</h2>
+        <div class="task-list">
+            <% tasks.forEach(task => { %>
+                <%- include('taskItem', { task: task }) %>
+            <% }) %>
+            <% if (tasks.length === 0) { %>
+                <p>No tasks found.</p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

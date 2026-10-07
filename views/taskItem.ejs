@@ -1,0 +1,14 @@
+<div class="task-item">
+    <h3><%= task.title %></h3>
+    <p><%= task.description %></p>
+    <% if (task.category) { %>
+        <p class="category">Category: <%= task.category.name %></p>
+    <% } %>
+    <% if (user.role === 'admin' && task.user) { %>
+        <p class="user-info">User: <%= task.user.username %></p>
+    <% } %>
+    <div class="actions">
+        <a href="/task/edit/<%= task._id %>">Edit</a>
+        <a href="/task/delete/<%= task._id %>" class="delete-btn">Delete</a>
+    </div>
+</div>

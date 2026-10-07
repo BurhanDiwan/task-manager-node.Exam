@@ -1,0 +1,15 @@
+<nav>
+    <ul>
+        <% if (user) { %>
+            <li><a href="/tasks">My Tasks</a></li>
+            <li><a href="/task/new">Add Task</a></li>
+            <% if (user.role === 'admin') { %>
+                <li><a href="/tasks/all">All User Tasks</a></li>
+            <% } %>
+            <li><a href="/logout">Sign Out</a></li>
+        <% } else { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Register</a></li>
+        <% } %>
+    </ul>
+</nav>
